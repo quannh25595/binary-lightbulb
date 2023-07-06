@@ -162,6 +162,21 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.22.6.tgz#201f8b47be20c76c7c5743b9c16129760bf9a975"
   integrity sha512-EIQu22vNkceq3LbjAq7knDf/UmtI2qbcNI8GRBlijez6TpQLvSodJPYfydQmNA5buwkxxxa/PVI44jjYZ+/cLw==
 
+"@babel/plugin-proposal-explicit-resource-management@^7.22.6":
+  version "7.22.6"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-explicit-resource-management/-/plugin-proposal-explicit-resource-management-7.22.6.tgz#bbe159067585e86c294ab810168ea7abe3304cd0"
+  integrity sha512-HWbTYUGDXZX9OjVs5RN5DydRZ48PD9QNe10Jgiwz+G0i8ESmQhKMHT01AyivzKzVudxLpXeEHpbhYOBPZLXQ0Q==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.22.5"
+    "@babel/plugin-syntax-explicit-resource-management" "^7.22.5"
+
+"@babel/plugin-syntax-explicit-resource-management@^7.22.5":
+  version "7.22.5"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-explicit-resource-management/-/plugin-syntax-explicit-resource-management-7.22.5.tgz#42964a4e754363c07529bb721616b43b4ead57e6"
+  integrity sha512-vokH/rTR4m9hlcxXXL0CPnpoGHUbZ6gfI3kq/UZSwrF9qGo/LxWqEP0qWYqkt5kc6/jrCOTaBeYw+lYleEFtLA==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.22.5"
+
 "@babel/plugin-transform-react-jsx-self@^7.22.5":
   version "7.22.5"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx-self/-/plugin-transform-react-jsx-self-7.22.5.tgz#ca2fdc11bc20d4d46de01137318b13d04e481d8e"
