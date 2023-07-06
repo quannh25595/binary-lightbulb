@@ -5,9 +5,11 @@ import LightbulbIcon from "@mui/icons-material/Lightbulb";
 interface LampProps {
   isOn: boolean;
   onToggle: (newValue: boolean) => void;
+  place: number;
+  placeVisible: boolean;
 }
 
-const Lamp: React.FC<LampProps> = ({ isOn, onToggle }) => {
+const Lamp: React.FC<LampProps> = ({ isOn, onToggle, place, placeVisible }) => {
   const handleSwitchChange = () => {
     onToggle(!isOn);
   };
@@ -22,7 +24,7 @@ const Lamp: React.FC<LampProps> = ({ isOn, onToggle }) => {
           gap: 2,
         }}
       >
-        <Typography variant="h4">{isOn ? "1" : "0"}</Typography>
+        {placeVisible && <Typography variant="h4">{place}</Typography>}
         <LightbulbIcon
           sx={{
             fontSize: 48,
