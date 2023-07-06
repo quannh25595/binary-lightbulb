@@ -1,40 +1,74 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
+import React, { useState, useMemo } from "react";
+import { IconButton, Typography } from "@mui/material";
+import { AddCircle, RemoveCircle } from "@mui/icons-material";
+import Lamp from "./Lamp";
 
-function App() {
-  const [count, setCount] = useState(0);
+const App: React.FC = () => {
+  const [lampStates, setLampStates] = useState([false, false, false]);
+
+  const handleToggle = (index: number) => {
+    const newLampStates = [...lampStates];
+    newLampStates[index] = !newLampStates[index];
+    setLampStates(newLampStates);
+  };
+
+  const handleAddLamp = () => {
+    setLampStates([false, ...lampStates]);
+  };
+
+  const handleRemoveLamp = () => {
+    if (lampStates.length > 0) {
+      const newLampStates = [...lampStates];
+      newLampStates.shift();
+      setLampStates(newLampStates);
+    }
+  };
+
+  const binary = useMemo(() => {
+    return lampStates.map((s) => (s ? "1" : "0")).join("");
+  }, [lampStates]);
 
   return (
-    <div className="App">
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        flexDirection: "column",
+        gap: 2,
+      }}
+    >
+      <div style={{ display: "flex", gap: "20px" }}>
+        {lampStates.map((isOn, index) => (
+          <Lamp key={index} isOn={isOn} onToggle={() => handleToggle(index)} />
+        ))}
+      </div>
+      <div style={{ display: "flex", gap: 1 }}>
+        <IconButton
+          color="primary"
+          aria-label="Add Lamp"
+          onClick={handleAddLamp}
+        >
+          <AddCircle />
+        </IconButton>
+        <IconButton
+          color="secondary"
+          aria-label="Remove Lamp"
+          onClick={handleRemoveLamp}
+          disabled={lampStates.length === 0}
+        >
+          <RemoveCircle />
+        </IconButton>
+      </div>
       <div>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
+        <Typography variant="h6">Binary value: {binary}</Typography>
+        <Typography variant="h6">
+          Decimal value: {parseInt(binary, 2)}
+        </Typography>
       </div>
-      <h1>React + Vite</h1>
-      <h2>On CodeSandbox!</h2>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR.
-        </p>
-
-        <p>
-          Tip: you can use the inspector button next to address bar to click on
-          components in the preview and open the code in the editor!
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
   );
-}
+};
 
 export default App;
